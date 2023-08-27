@@ -16,7 +16,7 @@ class Solution {
         
         for(int i = 0; i < height.length - 1; i++) {
             ans = ans + (Math.min(left[i], right[i]) - height[i]);
-            System.out.println(Math.min(left[i], right[i]) - height[i]);
+            //System.out.println(Math.min(left[i], right[i]) - height[i]);
         }
         return ans;
     }
