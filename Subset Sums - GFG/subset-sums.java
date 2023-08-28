@@ -34,17 +34,18 @@ class GFG
 //User function Template for Java//User function Template for Java
 class Solution{
     ArrayList<Integer> subsetSums(ArrayList<Integer> arr, int N){
+        // code here
         ArrayList<Integer> list = new ArrayList<>();
-        dfs(0, 0, list, arr, N);
+        subset(0, 0, list, arr);
         return list;
     }
-    public void dfs(int ind, int sum, ArrayList<Integer> list, ArrayList<Integer> arr, int N) {
-        if(ind == N){
+    public void subset(int ind, int sum, ArrayList<Integer> list, ArrayList<Integer> arr) {
+        if(ind == arr.size()) {
             list.add(sum);
             return;
         }
-        dfs(ind + 1, sum + arr.get(ind), list, arr, N);
-        dfs(ind + 1, sum, list, arr, N);
+        subset(ind + 1, sum + arr.get(ind), list, arr);
+        subset(ind + 1, sum, list, arr);
         
     }
 }
