@@ -14,28 +14,37 @@
  * }
  */
 class Solution {
-    int counter = 0;
-    public int pathSum(TreeNode root, int sum) {
-
-        if (root == null) return 0;
-
-        pathSumHelper(root, sum, 0);
-        pathSum(root.left, sum);
-        pathSum(root.right, sum);
-
-        return counter;
-
+    int count;
+    
+    public int pathSum(TreeNode root, int targetSum) {
+        count= 0;
+        
+        List<Integer> l1= new ArrayList<>();
+        preorder(root, targetSum, 0, l1);
+        
+        return count;
     }
-
-    void pathSumHelper(TreeNode root, int sum, long currentSum) {
-        if (root == null) {
+    
+    public void preorder(TreeNode root, int targetSum, long temp, List<Integer> l1){
+        if(root == null){
             return;
         }
-        currentSum += root.val;
-        if (currentSum == sum) {
-            counter++;
+        
+        // temp+= root.val;
+        l1.add(root.val);
+        
+        preorder(root.left, targetSum, temp, l1);
+        preorder(root.right, targetSum, temp, l1);
+
+        for(int i= l1.size()-1; i>=0; i--){
+            temp+= l1.get(i);
+            
+            if(temp == targetSum){
+                count++;
+            }
         }
-        pathSumHelper(root.left, sum, currentSum);
-        pathSumHelper(root.right, sum, currentSum);  
+        
+        //  Backtracking (restoring the previous condition)
+        l1.remove(l1.size()-1);
     }
 }
