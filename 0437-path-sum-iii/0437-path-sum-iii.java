@@ -14,37 +14,26 @@
  * }
  */
 class Solution {
-    int count;
-    
+    int count = 0;
+    ArrayList<Integer> list = new ArrayList<>();
     public int pathSum(TreeNode root, int targetSum) {
-        count= 0;
-        
-        List<Integer> l1= new ArrayList<>();
-        preorder(root, targetSum, 0, l1);
-        
+        getSum(root, targetSum);
         return count;
     }
     
-    public void preorder(TreeNode root, int targetSum, long temp, List<Integer> l1){
-        if(root == null){
+    public void getSum(TreeNode root, int sum) {
+        if(root == null)
             return;
-        }
+        list.add(root.val);
+        getSum(root.left, sum);
+        getSum(root.right, sum);
         
-        // temp+= root.val;
-        l1.add(root.val);
-        
-        preorder(root.left, targetSum, temp, l1);
-        preorder(root.right, targetSum, temp, l1);
-
-        for(int i= l1.size()-1; i>=0; i--){
-            temp+= l1.get(i);
-            
-            if(temp == targetSum){
+        long temp = 0;
+        for(int i = list.size() - 1; i >= 0; i--) {
+            temp = temp + list.get(i);
+            if(temp == sum)
                 count++;
-            }
         }
-        
-        //  Backtracking (restoring the previous condition)
-        l1.remove(l1.size()-1);
+        list.remove(list.size() - 1);
     }
 }
