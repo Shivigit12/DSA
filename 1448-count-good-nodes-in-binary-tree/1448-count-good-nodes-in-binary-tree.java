@@ -22,13 +22,11 @@ class Solution {
     public void dfs(TreeNode root, int value) {
         if(root == null)
             return;
-        if(root.val >= value)
-        {
+        if(root.val >= value) {
             ans++;
             value = root.val;
         }
-        dfs(root.left,value);
-        dfs(root.right,value);
-        
+        dfs(root.left, value);
+        dfs(root.right, value);
     }
 }
