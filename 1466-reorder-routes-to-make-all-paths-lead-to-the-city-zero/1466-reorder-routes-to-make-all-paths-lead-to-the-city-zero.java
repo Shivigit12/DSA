@@ -13,16 +13,17 @@ class Solution {
     
     public int minReorder(int n, int[][] connections) {
         List<List<Pair<Integer, Integer>>> adj = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
+        for(int i = 0; i < n; i++) {
             adj.add(new ArrayList<>());
         }
-        for (int[] connection : connections) {
-            adj.get(connection[0]).add(new Pair<>(connection[1], 1));
-            adj.get(connection[1]).add(new Pair<>(connection[0], -1));
+        for(int[] c : connections) {
+            adj.get(c[0]).add(new Pair<>(c[1], 1));
+            adj.get(c[1]).add(new Pair<>(c[0], -1));
         }
-        boolean[] visited = new boolean[n];
-        int[] minChange = new int[1];
-        dfs(adj, visited, minChange, 0);
+        boolean vis[] = new boolean[n];
+        int minChange[] = new int[1];
+        dfs(adj, vis, minChange, 0);
         return minChange[0];
     }
 }
+
