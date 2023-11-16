@@ -18,26 +18,28 @@ class Solution {
             else
                 map2.put(ch, 1);
         }
-        for(int j = 0 ; j < word2.length(); j++ ){
-            if(!map1.containsKey(word2.charAt(j))){
+        
+        for(int i = 0; i < word2.length(); i++) {
+            if(!map1.containsKey(word2.charAt(i)))
                 return false;
-            }
-            if(!map2.containsKey(word1.charAt(j))){
+            if(!map2.containsKey(word1.charAt(i)))
                 return false;
-            }
         }
         
         List<Integer> list1 = new ArrayList<>();
         List<Integer> list2 = new ArrayList<>();
-        for(Map.Entry<Character, Integer> entry : map1.entrySet()){
-            list1.add(entry.getValue());
+        for(Map.Entry<Character, Integer> m1 : map1.entrySet()) {
+            list1.add(m1.getValue());
         }
-        for(Map.Entry<Character, Integer> entry : map2.entrySet()){
-            list2.add(entry.getValue());
+        for(Map.Entry<Character, Integer> m2 : map2.entrySet()) {
+            list2.add(m2.getValue());
         }
         
         Collections.sort(list1);
         Collections.sort(list2);
-        return list1.equals(list2);
+        if(list1.equals(list2))
+            return true;
+        return false;
+            
     }
 }
