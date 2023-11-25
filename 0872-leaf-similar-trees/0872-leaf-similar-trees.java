@@ -25,9 +25,9 @@ class Solution {
     public void dfs(List<Integer> list, TreeNode root) {
         if(root == null)
             return;
-        if(root.left == null && root.right == null)
+        if(root.left == null && root.right == null) 
             list.add(root.val);
-            dfs(list, root.left);
-            dfs(list, root.right);
+        dfs(list, root.left);
+        dfs(list, root.right);
     }
 }
