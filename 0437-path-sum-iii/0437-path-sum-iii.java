@@ -15,8 +15,9 @@
  */
 class Solution {
     int count = 0;
-    ArrayList<Integer> list = new ArrayList<>();
+    List<Integer> list = new ArrayList<>();
     public int pathSum(TreeNode root, int targetSum) {
+        
         getSum(root, targetSum);
         return count;
     }
