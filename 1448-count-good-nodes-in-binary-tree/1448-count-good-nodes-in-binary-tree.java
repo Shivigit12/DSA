@@ -14,19 +14,21 @@
  * }
  */
 class Solution {
-    int ans = 0;
+    int count = 0;
+    
     public int goodNodes(TreeNode root) {
-        dfs(root, Integer.MIN_VALUE);
-        return ans;
+        int value = root.val;
+        countNodes(root, value);
+        return count;
     }
-    public void dfs(TreeNode root, int value) {
+    public void countNodes(TreeNode root, int value) {
         if(root == null)
             return;
         if(root.val >= value) {
-            ans++;
+            count++;
             value = root.val;
         }
-        dfs(root.left, value);
-        dfs(root.right, value);
+        countNodes(root.left, value);
+        countNodes(root.right, value);
     }
 }
