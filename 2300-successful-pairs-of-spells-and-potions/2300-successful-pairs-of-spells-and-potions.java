@@ -12,19 +12,16 @@ class Solution {
         int j = potions.length - 1;
         while(i < j) {
             int mid = i + (j - i) / 2;
-            if((long)num * potions[mid] < success) {
+            if((long)num * potions[mid] < success)
                 i = mid + 1;
-            }else {
+            else
                 j = mid;
-            }
-            
         }
+        
         if(i == potions.length - 1) {
-            if((long)num * potions[i] < success)
+            if((long) num * potions[i] < success)
                 return 0;
         }
         return potions.length - i;
-           
-        
     }
 }
