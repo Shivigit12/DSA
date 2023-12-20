@@ -14,18 +14,18 @@ class Solution {
             return null;
         ListNode dummy = new ListNode(0);
         dummy.next = head;
-        ListNode pre = dummy;
+        ListNode prev = dummy;
         for(int i = 0; i < left - 1; i++) {
-            pre = pre.next;
+            prev = prev.next;
         }
-        ListNode start = pre.next;
-        ListNode then = start.next;
+        ListNode start = prev.next;
+        ListNode forw = start.next;
         
         for(int i = 0; i < right - left; i++) {
-            start.next = then.next;
-            then.next = pre.next;
-            pre.next = then;
-            then = start.next;
+            start.next = forw.next;
+            forw.next = prev.next;
+            prev.next = forw;
+            forw = start.next;
         }
         return dummy.next;
     }
