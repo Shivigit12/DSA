@@ -24,14 +24,14 @@ class Solution {
         return buildTree(inorder, 0, inorder.length - 1, postorder, 0, postorder.length - 1, map);
     }
     
-    private TreeNode buildTree(int[] inorder, int is, int ie, int[] postorder, int ps, int pe, HashMap<Integer,         Integer> map) {
-        if(is > ie || ps > pe)
+    private TreeNode buildTree(int[] inorder, int istart, int iend, int[] postorder, int pstart, int pend, HashMap<Integer,Integer> map) {
+        if(istart > iend || pstart > pend)
             return null;
-        TreeNode root = new TreeNode(postorder[pe]);
-        int inRoot = map.get(postorder[pe]);
-        int numsLeft = inRoot - is;
-        root.left = buildTree(inorder, is, inRoot - 1, postorder, ps, ps + numsLeft - 1, map);
-        root.right = buildTree(inorder, inRoot + 1, ie, postorder, ps + numsLeft, pe - 1, map);
+        TreeNode root = new TreeNode(postorder[pend]);
+        int inRoot = map.get(postorder[pend]);
+        int numsLeft = inRoot - istart;
+        root.left = buildTree(inorder, istart, inRoot - 1, postorder, pstart, pstart + numsLeft - 1, map);
+        root.right = buildTree(inorder, inRoot + 1, iend, postorder, pstart + numsLeft, pend - 1, map);
         return root;
     } 
     
