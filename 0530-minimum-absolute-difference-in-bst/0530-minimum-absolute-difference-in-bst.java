@@ -17,7 +17,6 @@ class Solution {
     int minDiff = Integer.MAX_VALUE;
     int prev = Integer.MAX_VALUE;
     public int getMinimumDifference(TreeNode root) {
-        
         getMinimum(root);
         return minDiff;
     }
