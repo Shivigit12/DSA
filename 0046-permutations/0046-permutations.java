@@ -15,7 +15,7 @@ class Solution {
                 if(list.contains(nums[i]))
                     continue;
                 list.add(nums[i]);
-                System.out.println(i);
+                
                 permutations(nums, list, res);
                 list.remove(list.size() - 1);
             }
