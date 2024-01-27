@@ -11,6 +11,7 @@ class Solution {
         for(int i = arr2.length - 2; i >= 0; i--) {
             arr2[i] = arr2[i + 1] * nums[i + 1];
         }
+        
         for(int i = 0; i < ans.length; i++) {
             ans[i] = arr1[i] * arr2[i];
         }
