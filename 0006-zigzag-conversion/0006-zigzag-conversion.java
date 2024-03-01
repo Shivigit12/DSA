@@ -4,21 +4,19 @@ class Solution {
             return s;
         StringBuilder sb = new StringBuilder();
         int diff = 2 * (numRows - 1);
-        int n = s.length();
-        int diagonalDiff = diff;
-        int secondIndex;
         int index;
+        int n = s.length();
+        int secondDiff = diff;
+        int secondIndex;
         for(int i = 0; i < numRows; i++) {
             index = i;
             while(index < n) {
                 sb.append(s.charAt(index));
                 if(i != 0 && i != numRows - 1) {
-                    diagonalDiff = diff - 2 * i;
-                    secondIndex = index + diagonalDiff;
-                    
+                    secondDiff = diff - 2 * i;
+                    secondIndex = index + secondDiff;
                     if(secondIndex < n) {
                         sb.append(s.charAt(secondIndex));
-                        
                     }
                 }
                 index = index + diff;
