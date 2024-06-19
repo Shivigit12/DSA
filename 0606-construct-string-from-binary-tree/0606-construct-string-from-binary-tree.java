@@ -16,11 +16,11 @@
 class Solution {
     StringBuilder sb = new StringBuilder();
     public String tree2str(TreeNode root) {
-        treeToStringCheck(root);
+        treeToString(root);
         return sb.toString();
     }
     
-    public void treeToStringCheck(TreeNode root) {
+    public void treeToString(TreeNode root) {
         if(root == null)
             return;
         if(root.left == null && root.right == null) {
@@ -29,11 +29,11 @@ class Solution {
         }
         sb.append(root.val);
         sb.append("(");
-        treeToStringCheck(root.left);
+        treeToString(root.left);
         sb.append(")");
         if(root.right != null) {
             sb.append("(");
-            treeToStringCheck(root.right);
+            treeToString(root.right);
             sb.append(")");
         }
         return;
