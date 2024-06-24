@@ -6,6 +6,6 @@ class Solution {
                 return s.charAt(i);
             set.add(s.charAt(i));
         }
-        return 'z';
+        return '0';
     }
 }
