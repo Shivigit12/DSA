@@ -10,12 +10,12 @@ class Solution {
         solve(list, k, index);
         return ans;
     }
+    
     public void solve(List<Integer> list, int k, int index) {
         if(list.size() == 1) {
             ans = list.get(0);
             return;
         }
-        
         index = (index + k) % list.size();
         list.remove(index);
         solve(list, k, index);
