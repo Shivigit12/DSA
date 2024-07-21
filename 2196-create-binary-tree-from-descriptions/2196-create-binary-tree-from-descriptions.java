@@ -18,11 +18,12 @@ class Solution {
         HashMap<Integer, TreeNode> map = new HashMap<>();
         HashSet<Integer> set = new HashSet<>();
         for(int i = 0; i < descriptions.length; i++) {
-            if(!map.containsKey(descriptions[i][0])) 
+            if(!map.containsKey(descriptions[i][0]))
                 map.put(descriptions[i][0], new TreeNode(descriptions[i][0]));
             if(!map.containsKey(descriptions[i][1]))
-                map.put(descriptions[i][1],new TreeNode(descriptions[i][1]));
-            set.add(descriptions[i][1]);
+                map.put(descriptions[i][1], new TreeNode(descriptions[i][1]));
+            if(!set.contains(descriptions[i][1]))
+                set.add(descriptions[i][1]);
         }
         TreeNode root = null;
         for(int i = 0; i < descriptions.length; i++) {
