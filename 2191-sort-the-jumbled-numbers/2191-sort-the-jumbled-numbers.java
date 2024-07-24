@@ -1,30 +1,29 @@
 class Solution {
     public int[] sortJumbled(int[] mapping, int[] nums) {
-        List<int[]> mappedList = new ArrayList<>();
-        for (int i = 0; i < nums.length; i++) {
-            String s = Integer.toString(nums[i]);
-            StringBuilder n = new StringBuilder();
-            for (char ch : s.toCharArray()) {
-                n.append(mapping[ch - '0']);
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int num : nums) {
+            if(!map.containsKey(num)) {
+                map.put(num, translateNums(num, mapping));
             }
-            mappedList.add(new int[]{nums[i], Integer.parseInt(n.toString()), i});
         }
-
-        // Step 2: Sort the list based on the mapped values and original indices for stability
-        mappedList.sort((a, b) -> {
-            if (a[1] != b[1]) {
-                return Integer.compare(a[1], b[1]);
-            } else {
-                return Integer.compare(a[2], b[2]);
-            }
-        });
-
-        // Step 3: Create a result array and fill it with the sorted original nums
-        int[] sortedNums = new int[nums.length];
-        for (int i = 0; i < mappedList.size(); i++) {
-            sortedNums[i] = mappedList.get(i)[0];
+        Integer[] numbers = Arrays.stream(nums).boxed().toArray(Integer[] :: new);
+        Arrays.sort(numbers, (a, b) -> Integer.compare(map.get(a), map.get(b)));
+        for(int i = 0; i < nums.length; i++) {
+            nums[i] = numbers[i];
         }
-
-        return sortedNums;
+        return nums;
+    }
+    public int translateNums(int num, int[] mapping) {
+        if(num == 0)
+            return mapping[0];
+        int res = 0;
+        int mul = 1;
+        while(num > 0) {
+            int digit = num % 10;
+            num = num / 10;
+            res = res + mapping[digit] * mul;
+            mul = mul * 10;
+        }
+        return res;
     }
 }
