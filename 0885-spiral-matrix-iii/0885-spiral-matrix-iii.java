@@ -2,7 +2,7 @@ class Solution {
     public int[][] spiralMatrixIII(int rows, int cols, int rStart, int cStart) {
         int[][] directions = {{0,1},{1,0},{0,-1},{-1,0}};
         int[][] ans = new int[rows * cols][2];
-        ans[0] = new int[]{rStart,cStart};
+        ans[0] = new int[]{rStart, cStart};
         int dir = 0;
         int steps = 0;
         int count = 1;
@@ -13,7 +13,7 @@ class Solution {
             steps++;
           }
 
-          for(int i=0;i<steps;i++)
+          for(int i = 0; i < steps; i++)
           {
             rStart += directions[dir][0];
             cStart += directions[dir][1];
