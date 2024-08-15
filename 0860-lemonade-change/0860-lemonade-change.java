@@ -18,7 +18,7 @@ class Solution {
                     fiveC--;
                     tenC--;
                 } else if (fiveC > 2) {
-                    fiveC -= 3;
+                    fiveC = fiveC - 3;
                 } else {
                     return false;
                 }
